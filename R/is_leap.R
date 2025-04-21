@@ -18,5 +18,22 @@
 #' is_leap(1900) # FALSE
 #' is_leap(2021) # FALSE
 is_leap <- function(year) {
-  #implement after writing tests
+  
+  if (missing(year)) {
+    stop("Argument \"year\" is missing.")
+  }
+  
+  if (is.na(year)) {
+    stop("Year can not be a missing value.")
+  }
+  
+  if (!is.numeric(year)) {
+    stop("Year must be a single numeric value.")
+  }
+  
+  if (year <= 0 || year %% 1 != 0) {
+    stop("Year must be a positive integer.")
+  }
+  
+  return((year %% 4 == 0) & (year %% 100 != 0 | year %% 400 == 0))
 }
